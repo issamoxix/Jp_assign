@@ -1,4 +1,4 @@
-# SprkApi
+# Assign
 ## Setup 
 To build the project, execute the following command:
 
