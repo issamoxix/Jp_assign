@@ -12,4 +12,7 @@ To run the project, use the following command:
 docker-compose up
 ```
 ## Backend
-hosted in ``
+hosted in `http://localhost:8000/`
+
+## Frontend
+hosted in `http://localhost:8080/`
