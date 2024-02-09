@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  
+  backend:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    container_name: Backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app  
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: Frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app
+
+volumes:
+  postgres_data:
