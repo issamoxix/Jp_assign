@@ -6,8 +6,6 @@ from datetime import datetime
 from .permissions import IsAuthenticatedCookie
 
 class SubmitLegalRequestView(APIView):
-    permission_classes = [IsAuthenticatedCookie]
-
         
     def post(self, request):
         legal_request_form = LegalRequestForm(request.POST)
@@ -39,7 +37,7 @@ class SubmitLegalRequestView(APIView):
         limit = int(request.GET.get('limit', 10))
         
         legal_requests = LegalRequest.objects.all().values()
-        total = legal_requests.count()
+        total = max(legal_requests.count(), 10)
         legal_requests = legal_requests[offset:offset+limit]
         return JsonResponse(data={"legal_requests": list(legal_requests), "pages": total // 10, "offset": offset, "limit": limit})
 
